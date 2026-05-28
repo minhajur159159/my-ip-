@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Minhajur IPTV</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial;
+}
+
+body{
+    background:#000;
+    color:white;
+}
+
+/* HEADER */
+
+.header{
+    text-align:center;
+    padding:20px;
+    font-size:40px;
+    font-weight:bold;
+    color:red;
+    text-shadow:0 0 20px red;
+    border-bottom:2px solid red;
+}
+
+/* VIDEO */
+
+.player{
+    width:95%;
+    margin:auto;
+    margin-top:20px;
+}
+
+video{
+    width:100%;
+    border-radius:15px;
+    background:#111;
+}
+
+/* SEARCH */
+
+.search{
+    width:95%;
+    margin:20px auto;
+}
+
+.search input{
+    width:100%;
+    padding:16px;
+    border:none;
+    outline:none;
+    border-radius:20px;
+    background:#111;
+    color:white;
+    font-size:18px;
+    box-shadow:0 0 15px cyan;
+}
+
+/* CHANNELS */
+
+.channels{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+    padding:15px;
+}
+
+.channel{
+    background:white;
+    border-radius:20px;
+    padding:15px;
+    text-align:center;
+    cursor:pointer;
+    transition:0.3s;
+    box-shadow:0 0 15px cyan;
+}
+
+.channel:hover{
+    transform:scale(1.05);
+}
+
+.channel img{
+    width:100%;
+    height:90px;
+    object-fit:contain;
+}
+
+.channel p{
+    color:black;
+    margin-top:10px;
+    font-weight:bold;
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+.channels{
+    grid-template-columns:repeat(2,1fr);
+}
+
+.header{
+    font-size:30px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<div class="header">
+    Minhajur IPTV
+</div>
+
+<!-- VIDEO PLAYER -->
+
+<div class="player">
+
+<video id="videoPlayer" controls autoplay>
+<source src="" type="application/x-mpegURL">
+</video>
+
+</div>
+
+<!-- SEARCH -->
+
+<div class="search">
+
+<input type="text" id="searchBox" placeholder="Search Channel...">
+
+</div>
+
+<!-- CHANNEL LIST -->
+
+<div class="channels" id="channelList">
+
+<!-- CHANNEL 1 -->
+
+<div class="channel"
+onclick="playVideo('https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8')">
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/5/5b/BTV_logo.svg">
+
+<p>BTV</p>
+
+</div>
+
+<!-- CHANNEL 2 -->
+
+<div class="channel"
+onclick="playVideo('https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8')">
+
+<img src="https://upload.wikimedia.org/wikipedia/en/4/4b/Channel_i.svg">
+
+<p>Channel i</p>
+
+</div>
+
+<!-- CHANNEL 3 -->
+
+<div class="channel"
+onclick="playVideo('https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8')">
+
+<img src="https://upload.wikimedia.org/wikipedia/en/e/e0/NTV_%28Bangladesh%29_logo.svg">
+
+<p>NTV</p>
+
+</div>
+
+<!-- CHANNEL 4 -->
+
+<div class="channel"
+onclick="playVideo('https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8')">
+
+<img src="https://upload.wikimedia.org/wikipedia/en/4/43/Gazi_Television_Logo.png">
+
+<p>GTV</p>
+
+</div>
+
+<!-- CHANNEL 5 -->
+
+<div class="channel"
+onclick="playVideo('https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8')">
+
+<img src="https://upload.wikimedia.org/wikipedia/en/e/e2/ATN_Bangla.svg">
+
+<p>ATN Bangla</p>
+
+</div>
+
+<!-- CHANNEL 6 -->
+
+<div class="channel"
+onclick="playVideo('https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8')">
+
+<img src="https://upload.wikimedia.org/wikipedia/en/3/35/Banglavision.svg">
+
+<p>Bangla Vision</p>
+
+</div>
+
+</div>
+
+<script>
+
+/* PLAY VIDEO */
+
+function playVideo(url){
+
+document.getElementById("videoPlayer").src = url;
+
+}
+
+/* SEARCH */
+
+document.getElementById("searchBox")
+.addEventListener("keyup", function(){
+
+let value = this.value.toLowerCase();
+
+let channels = document.querySelectorAll(".channel");
+
+channels.forEach(function(channel){
+
+let text = channel.innerText.toLowerCase();
+
+if(text.includes(value)){
+
+channel.style.display = "block";
+
+}else{
+
+channel.style.display = "none";
+
+}
+
+});
+
+});
+
+</script>
+
+</body>
+</html>
